@@ -7,4 +7,6 @@ npm install
 bower install
 grunt server
 ```
+tag](https://github.com/TheodorTomas/FlappyBird/blob/master/Flappybird.png)
+
 
