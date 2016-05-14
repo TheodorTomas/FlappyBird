@@ -1,0 +1,90 @@
+window.Player = (function() {
+	'use strict';
+	var Controls = window.Controls;
+	// All these constants are in em's, multiply by 10 pixels
+	// for 1024x576px canvas.
+	var SPEED = 30; // * 10 pixels per second
+	var WIDTH = 5;
+	var HEIGHT = 5;
+	var INITIAL_POSITION_X = 30;
+	var INITIAL_POSITION_Y = 25;
+	var Player = function(el, game) {
+		this.el = el;
+		this.game = game;
+		this.pos = { x: 0, y: 0 };
+        this.scorePipe = '';
+        this.velocity = 0;
+        this.degs = 0;
+	};
+	/**
+	 * Resets the state of the player for a new game.
+	 */
+	Player.prototype.reset = function() {
+		this.pos.x = INITIAL_POSITION_X;
+		this.pos.y = INITIAL_POSITION_Y;
+        this.game.score = 0;
+        this.scorePipe = '';
+        this.velocity = 0;
+        $('.Game-Score').show();
+        $('.Game-Score').html('0');
+	};
+	Player.prototype.onFrame = function(delta) {
+        if ((Controls.keys.space || Controls.keys.mousedown)) {
+            if (this.pos.y < -1) {/* Do nothing */ } 
+            else {
+                this.pos.y -= delta * SPEED + 0.6;
+                this.velocity = 0;
+                $('.Wing').css('transform', 'translateZ(0) rotate(35deg)');
+                document.getElementById('flapp').play();
+                this.degs = -65;
+            }
+        } else {
+            this.pos.y += delta * SPEED + this.velocity;
+            this.velocity += SPEED * 0.0005;
+            $('.Wing').css('transform', 'translateZ(0) rotate(0)');
+            if (Math.floor(this.degs) < 70) {
+                this.degs += delta * SPEED * 8;
+            } else {
+                this.degs = 70;
+            }
+        }
+
+		this.checkCollisionWithBounds();
+        this.checkCollisionWithPipes();
+        // Update UI
+		this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(' + this.degs +'deg)');
+	};
+
+    Player.prototype.checkCollisionWithPipes = function() {
+        var playerX = this.pos.x;
+        var playerY = Math.floor(this.pos.y);
+        for (var i = 0; i < this.game.pipe.pipeArr.length; i++) {
+            var pipePosX = Math.floor(this.game.pipe.pipeArr[i].bottom.pos.x);
+            var lowerPipePosY = this.game.pipe.pipeArr[i].bottom.pipe[0].style.height;
+            var topPipePosY = this.game.pipe.pipeArr[i].top.pipe[0].style.height;
+            lowerPipePosY = Math.floor(this.game.WORLD_HEIGHT - lowerPipePosY.substring(0, lowerPipePosY.length - 2));
+            topPipePosY = Math.floor(topPipePosY.substring(0, topPipePosY.length - 2));
+            if (-pipePosX >= playerX + WIDTH && (-pipePosX - WIDTH * 2) <= playerX + WIDTH ) {
+                if (lowerPipePosY < playerY + HEIGHT || topPipePosY > playerY) {
+                    $('.Game-Score').hide();
+                    return this.game.gameover();
+                } else {
+                    if (this.scorePipe !== this.game.pipe.pipeArr[i].name) {
+                        this.game.score += 1;
+                        $('.Game-Score').html(this.game.score);
+                        this.scorePipe = this.game.pipe.pipeArr[i].name;
+                    }
+                }
+            }
+        }
+    };
+
+	Player.prototype.checkCollisionWithBounds = function() {
+		if (this.pos.x < 0 ||
+			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
+			this.pos.y + HEIGHT > this.game.WORLD_HEIGHT - 2) {
+			return this.game.gameover();
+		}
+	};
+	return Player;
+})();

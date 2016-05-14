@@ -1,0 +1,100 @@
+
+@import 'variables';
+
+.GameCanvas {
+    // Design everything with a nice em of 10px.
+    font-size: $base-font-size;
+
+    // Create a 1024x576 pixel canvas.
+    // If everything is defined in em's, you can resize
+    // the whole game just by changing the font-size above
+    // with javascript.
+    position: absolute;
+
+
+    width: em(800px);
+    height: em(576px);
+    left: 0;
+    right:0;
+    margin: auto;
+    background-size:contain;
+
+    // Don't draw outside this box.
+    overflow: hidden;
+
+    // Some graphics
+    //background: rgb(103, 174, 235);
+
+}
+
+.Background {
+    position: relative;
+    background-image:url('/img/bak3.png');
+    background-repeat: repeat-x;
+    height: em(576px);
+    width: em(2048px);
+    margin-top: em(-22px);
+
+
+   -webkit-animation: animatedBackground linear 10s infinite;
+   -moz-animation: animatedBackground linear 10s infinite;
+   -os-animation: animatedBackground linear 10s infinite;
+   animation: animatedBackground linear 10s infinite;
+   -webkit-animation-play-state: paused;
+   animation-play-state: paused;
+
+}
+
+.Grass {
+    position: relative;
+    bottom: em(-556px);
+    background-image: url('/img/grasXsmall.png');
+    background-repeat: repeat-x;
+    width: em(1800px);
+    height: em(20px);
+    z-index:100;
+
+
+
+    -webkit-animation: animateGrass linear 5s infinite;
+    -moz-animation: animateGrass linear 5s infinite;
+    -ms-animation: animateGrass linear 5s infinite;
+    animation: animateGrass linear 5s infinite;
+    -webkit-animation-play-state: paused;
+   animation-play-state: paused;
+}
+
+.music {
+    position:absolute;
+    top:0;
+    z-index:100;
+}
+
+#mute {
+    color: white;
+    background-color: red;
+    border: 0;
+    border-radius: em(4px);
+    padding: em(5px);
+}
+
+.Game-Score {
+    position: absolute;
+    z-index: 100;
+    font-size: em(40px);
+    margin-left: 49%;
+    top: em(10px);
+    color:white;
+    font-family:impact;
+}
+
+@-webkit-keyframes animatedBackground {
+  from { right: 0; }
+  to { right: em(1024px); }
+}
+
+@-webkit-keyframes animateGrass {
+  from { right: 0; }
+  to { right: em(1000px); }
+}
+

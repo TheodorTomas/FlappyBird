@@ -1,0 +1,40 @@
+
+.Player {
+    // Absolutely position entities at 0,0 and use transform to
+    // move it around.
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: em(50px);
+    height: em(50px);
+
+    background-image:url('/img/yellow-bird-nowings.png');
+    display: none;
+    background-size:contain;
+
+
+    -webkit-transform: translateZ(0);
+
+}
+
+
+.Wing {
+    // Absolutely position entities at 0,0 and use transform to
+    // move it around.
+    position: absolute;
+    top: em(21px);
+    width: em(30px);
+    height: em(31px);
+
+    background-image:url('/img/yellow-wing-red-veski.png');
+    background-repeat: no-repeat;
+
+
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+
+    transform-origin:100% 0;
+
+    -webkit-transform: translateZ(0);
+}
+

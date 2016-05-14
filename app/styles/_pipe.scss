@@ -1,0 +1,40 @@
+
+.Pipedown1, .Pipedown2, .Pipedown3  {
+
+    position: absolute;
+    bottom: 0;
+    right:0;
+
+    background-image:url('/img/pipe.png'), url('/img/p_down.png');
+    background-repeat: no-repeat, repeat-y;
+
+
+    width: em(100px);
+    height: em(180px);
+
+
+    transform: translateZ(0);
+
+}
+
+
+
+.Pipeup1, .Pipeup2, .Pipeup3 {
+
+    position: absolute;
+    top: 0;
+    right:0;
+
+    background-image:url('/img/pipeup.png'), url('/img/p_up.png');
+    background-repeat:no-repeat, repeat-y;
+    background-position:left bottom;
+
+
+
+    width: em(100px);
+    height: em(280px);
+
+    transform: translateZ(0);
+
+}
+

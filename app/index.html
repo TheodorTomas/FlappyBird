@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Fat Flappy Bird</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+        <link rel="shortcut icon" href="/favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="GameCanvas">
+            <div class="Grass"></div>
+            <span class="Game-Score"></span>
+          <div class="Background">
+
+          </div>
+          <div class="music">
+                <button id="mute">Mute</button>
+
+        </div>
+
+
+                <div class="Player">
+                    <div class="Wing"></div>
+                </div>
+
+            <div class="Pipedown1 Pipe"></div>
+            <div class="Pipeup1 Pipe"></div>
+
+            <div class="Pipedown2 Pipe"></div>
+            <div class="Pipeup2 Pipe"></div>
+
+            <div class="Pipedown3 Pipe"></div>
+            <div class="Pipeup3 Pipe"></div>
+
+
+
+            <div class="Scoreboard">
+                <h1>Game over</h1>
+                <h2>Score:</h2>
+                <span class="Score"></span>
+                <h2 class="High-score-text">Highscore:</h2>
+                <span class="High-score"></span>
+                <button class="Scoreboard-restart">
+                    <span class="Scoreboard-restartText">Restart</span>
+                </button>
+            </div>
+            <div class="Start">
+                <h1>Flappy Fat bird</h1>
+                <button class="Start-restart">
+                    <span class="Scoreboard-restartText">Start Game</span>
+                </button>
+            </div>
+
+        </div>
+
+
+        <div id="sound-effects">
+              <audio id="flapp">
+              <source src="sounds/fjuff.mp3" type="audio/mpeg">
+              </audio>
+
+              <audio id="gameover">
+              <source src="sounds/haha.mp3" type="audio/mpeg">
+              </audio>
+              <audio id="themusic" class="playing" autoplay loop>
+              <source src="sounds/theme.mp3" type="audio/mpeg">
+              </audio>
+        </div>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <script src="scripts/controls.js"></script>
+        <script src="scripts/game.js"></script>
+        <script src="scripts/player.js"></script>
+        <script src="scripts/pipe.js"></script>
+        <script src="scripts/utils.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

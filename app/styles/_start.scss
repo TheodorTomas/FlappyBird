@@ -1,0 +1,21 @@
+
+
+/**
+ * Reset transform to animate it into the correct spot on the screen.
+ */
+
+.Start.is-visible {
+	transform: none;
+}
+.Start-restart {
+
+	margin-top: em(150px);
+	font-size: inherit;
+	padding: em(4px) em(15px);
+	border: em(2px) solid black;
+	background: none;
+	cursor: pointer;
+}
+.Start h1{
+	font-size: em(30px);
+}
